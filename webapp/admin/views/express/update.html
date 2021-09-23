@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/add.css"/>
+		<style>
+			.btn{
+				cursor: pointer;
+			}
+			.redBox{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="header">
+				<span>修改快递信息</span>
+			</div>
+			<div class="content">
+				<table>	
+					<tr>
+						<td class="text-right">运单号</td><td class="content_right"><input id="number" class="input inline-input" placeholder="请输入运单号码"> <span onclick="findExpress()" class="btn btn-info">立即查找</span></td>
+					</tr>
+				</table>
+			</div>
+			
+			
+			<div class="header">
+				<span>查找信息如下</span>
+			</div>
+			<div class="content">
+				<table>
+					<input type="hidden" id="expressId">
+					<tr>
+						<td class="text-right">快递单号</td><td class="content_right"><input onblur="numberCheck()" id="ipt_number" class="input" placeholder="请输入快递单号"></td>
+					</tr>
+					<tr>
+						<td class="text-right">快递公司</td><td class="content_right"><input onblur="companyCheck()" id="ipt_company" class="input" placeholder="请输入快递公司"></td>
+					</tr>
+					<tr>
+						<td class="text-right">收货人姓名</td><td class="content_right"><input onblur="nameCheck()" id="ipt_userName" class="input" placeholder="请输入收货人姓名"></td>
+					</tr>
+					<tr>
+						<td class="text-right">手机号码</td><td class="content_right"><input onblur="phoneCheck()" id="ipt_userPhone" class="input" placeholder="请输入手机号码"></td>
+					</tr>
+					<tr>
+						<td class="text-right">邮箱</td><td class="content_right"><input onblur="mailCheck()" id="ipt_email" class="input" placeholder="请输入邮箱"></td>
+					</tr>
+					<tr>
+						<td class="text-right">快递状态</td><td class="content_right"><input id="ipt_status0" type="radio" name="status">已签收  <input id="ipt_status1" name="status" type="radio">未签收</td>
+					</tr>
+					<tr>
+						<td></td><td class="content_right"><span class="btn btn-info" onclick="update()">立即修改</span> <span onclick="reset()" class="btn">重置</span> </td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="../../../layer/layer.js"></script>
+	<script src="http://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="../../../js/myCommon.js"></script>
+	<script>
+		$(function (){
+			$(".header:eq(1),.content:eq(1)").hide();
+		})
+
+		var checkFlag = true;
+
+		// 快递公司名称检查 : (快递公司名称必须是3~10位中文或字母)
+		function companyCheck(){
+			var reg = /^[\u4e00-\u9fa5_a-zA-Z]{3,10}$/;
+			var ipt_company = $("#ipt_company").val();
+			if(reg.test(ipt_company)){
+				$("#ipt_company").removeClass("redBox");
+			}else{
+				layer.msg("<span style='color: white'>快递公司名称必须是3~10位中文或字母</span>",function(){});
+				checkFlag = false;
+				$("#ipt_company").addClass("redBox");
+			}
+		}
+
+		// 电话号码检查 : (必须是11位正确手机号)
+		function phoneCheck(){
+			var reg = /^((0\d{2,3}-\d{7,8})|(1[345789]\d{9}))$/;
+			var reg2 = /^1[3|4|5|7|8][0-9]{9}$/;
+			var ipt_userPhone = $("#ipt_userPhone").val();
+			if(reg.test(ipt_userPhone) || reg2.test(ipt_userPhone)){
+				$("#ipt_userPhone").removeClass("redBox");
+			}else{
+				layer.msg("<span style='color: white'>必须是11位正确手机号</span>",function(){})
+				checkFlag = false;
+				$("#ipt_userPhone").addClass("redBox");
+			}
+		}
+		// 单号检查 : (必须是6位数字或字母)
+		function numberCheck(){
+			var reg = /^([0-9]|[A-z]){6}$/;
+			var ipt_number = $("#ipt_number").val();
+			if(reg.test(ipt_number)){
+				$("#ipt_number").removeClass("redBox");
+			}else{
+				layer.msg("<span style='color: white'>必须是6位数字或字母</span>",function(){})
+				checkFlag = false;
+				$("#ipt_number").addClass("redBox");
+			}
+		}
+		// 用户名检查 : (用户名长度为1~10个非空白字符之间)
+		function nameCheck(){
+			var reg = /^.{1,10}$/;
+			var ipt_userName = $("#ipt_userName").val();
+			if(reg.test(ipt_userName)){
+				$("#ipt_userName").removeClass("redBox");
+			}else{
+				layer.msg("<span style='color: white'>用户名长度为1~10个非空白字符之间</span>",function(){})
+				checkFlag = false;
+				$("#ipt_userName").addClass("redBox");
+			}
+		}
+
+		// 邮箱检测 : (必须为正确邮箱格式)
+		function mailCheck(){
+			var reg = /^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
+			var email = $("#ipt_email").val();
+			if(reg.test(email)){
+				$("#ipt_email").removeClass("redBox");
+			}else{
+				layer.msg("<span style='color: white'>必须为正确邮箱格式</span>",function(){})
+				checkFlag = false;
+				$("#ipt_email").addClass("redBox");
+			}
+		}
+
+
+		function findExpress(){
+			let windowId = layer.load(0);
+			
+			$.ajax({
+				type: "GET",
+				url: url + "/express/" + $("#number").val(),
+				data: {token:$.cookie('token')},
+				dataType: "json",
+				success: function(data){
+					layer.close(windowId);
+					if(data.code == 200){
+						// 查找到快递
+						$(".header:eq(1),.content:eq(1)").fadeIn(1000);
+						$("#ipt_number").val(data.obj.number);
+						$("#ipt_company").val(data.obj.company);
+						$("#ipt_userName").val(data.obj.userName);
+						$("#ipt_userPhone").val(data.obj.userPhone);
+						$("#ipt_email").val(data.obj.email);
+						$("#expressId").val(data.obj.id);
+						if(data.obj.status == 0){ // 未签收
+							$("#ipt_status0").prop("checked",false);
+							$("#ipt_status1").prop("checked",true);
+						}else{
+							$("#ipt_status0").prop("checked",true);
+							$("#ipt_status1").prop("checked",false);
+						}
+					}else if(data.code == 401){
+						$.cookie('token', null, {path:"/"})
+						window.parent.location.reload();
+					}else{
+						// 查找失败
+						layer.msg("<span style='color: white'><span style='color: white'>" + data.message + "</span>", function (){});
+						$(".header:eq(1),.content:eq(1)").hide();
+						reset();
+					}
+				}
+			});
+			
+		}
+		function reset(){
+			$("#ipt_number").val("");
+			$("#ipt_company").val("");
+			$("#ipt_userName").val("");
+			$("#ipt_userPhone").val("");
+			$("#ipt_email").val("");
+			$("#expressId").val("");
+			$("#ipt_status0").prop("checked",false);
+			$("#ipt_status1").prop("checked",false);
+		}
+		function update(){
+			checkFlag = true;
+			companyCheck()
+			numberCheck();
+			phoneCheck();
+			nameCheck();
+			mailCheck();
+			if(checkFlag){
+				var id = $("#expressId").val();
+				var number = $("#ipt_number").val();
+				var company = $("#ipt_company").val();
+				var userName = $("#ipt_userName").val();
+				var userPhone = $("#ipt_userPhone").val();
+				var email = $("#ipt_email").val();
+				var status = 0;
+				if($("#ipt_status0").prop("checked"))
+					status = 1;
+				layer.load(0);
+				
+				$.ajax({
+					type: "POST",
+					url: url + "/express/" + id,
+					data: {number:number,company:company,userName:userName,userPhone:userPhone,status:status,email:email,_method:"PUT",token:$.cookie('token')},
+					dataType: "json",
+					success: function(data){
+						layer.closeAll();
+						if(data.code == 200){
+							// 更改成功
+							layer.msg("<span style='color: white'><span style='color: white'>" + data.message + "</span>");
+						}else if(data.code == 401){
+							$.cookie('token', null, {path:"/"})
+							window.parent.location.reload();
+						}else{
+							// 单号重复
+							layer.msg("<span style='color: white'><span style='color: white'>" + data.message + "</span>", function(){});
+						}
+					}
+				});
+			}
+		}
+	</script>
+
+</html>

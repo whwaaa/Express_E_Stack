@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+    <!-- 扫描controller包 -->
+    <context:component-scan base-package="com.xiaojumao.controller,com.xiaojumao.wx.controller,com.xiaojumao.exception"/>
+
+    <!-- 开启注解驱动 -->
+    <mvc:annotation-driven/>
+
+    <!-- 配置静态资源处理器 -->
+    <mvc:resources mapping="/**" location="/"/>
+
+    <!-- 跨域请求 -->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-methods="GET,POST,PUT,PATCH,DELETE"
+                     allow-credentials="true"
+        />
+    </mvc:cors>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 可以配置多个拦截器 -->
+        <mvc:interceptor>
+            <!-- 拦截器拦截路径 -->
+            <mvc:mapping path="/**"/>
+            <!-- 指定定义的拦截器 -->
+            <bean id="verLogin" class="com.xiaojumao.interception.VerLogin"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

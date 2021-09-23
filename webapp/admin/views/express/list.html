@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/list.css"/>
+		<link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script src="../../../js/myCommon.js"></script>
+	</head>
+	<body>
+	<table id="express_list"></table>
+	<script>
+		$(function(){
+			$("#express_list").bootstrapTable({
+				url:url + "/expresses?token=" + $.cookie('token'),//数据地址
+				striped:true,//是否显示行的间隔
+				pageNumber:1,//初始化加载第几页
+				pagination:true,//是否分页
+				sidePagination:'server',
+				pageSize:8,
+				pageList:[5,8,15],
+				showRefresh:true,
+				queryParams:function(params){
+					var temp = {
+						offset:params.offset,
+						pageNumber:params.limit
+					};
+					return temp;
+				},
+				columns:[
+					{
+						title:"编号",
+						field:"id",
+						sortable:false
+					},
+					{
+						title:"单号",
+						field:"number",
+						sortable:false
+					},
+					{
+						title:"姓名",
+						field:"userName",
+						sortable:false
+					},
+					{
+						title:"电话",
+						field:"userPhone",
+						sortable:false
+					},
+					{
+						title:"邮箱",
+						field:"email",
+						sortable:false
+					},
+					{
+						title:"快递公司",
+						field:"company",
+						sortable:false
+					},
+					{
+						title:"取件码",
+						field:"code",
+						sortable:false
+					},
+					{
+						title:"入库时间",
+						field:"strInTime",
+						sortable:false
+					},
+					{
+						title:"出库时间",
+						field:"strOutTime",
+						sortable:false
+					},
+					{
+						title:"状态",
+						field:"status",
+						sortable:false
+					},
+					{
+						title:"录入人电话",
+						field:"sysPhone",
+						sortable:false
+					}
+				]
+			});
+		});
+	</script>
+	</body>
+<!--	<script src="../../../qrcode/jquery2.1.4.js"></script>-->
+<!--	<script src="../../../layer/layer.js"></script>-->
+<!--	<script>-->
+<!--		var windowId = layer.load(0);-->
+<!--		$.post("/express/findAll.do",{limit:0,offset:0,pageNumber:5},function(data){-->
+<!--			layer.close(windowId);-->
+<!--			if(data.status == 0){-->
+<!--				$.each(data.data, function () {-->
+<!--					this.status = this.status==1 ? "已取件" : "未取件";-->
+<!--					this.code = this.code==null||this.code==''||this.code==undefined?"无取件码":this.code;-->
+<!--					var date = new Date(this.inTime);-->
+<!--					console.log(date.toLocaleDateString())-->
+<!--					let fullYear = date.getFullYear();-->
+<!--					let month = (date.getMonth()+1).toString();-->
+<!--					let day = date.getDate().toString();-->
+<!--					let hours = date.getHours().toString();-->
+<!--					let minutes = date.getMinutes().toString();-->
+<!--					month = month.length<2 ? "0" + month : month;-->
+<!--					day = day.length<2 ? "0" + day : day;-->
+<!--					hours = hours.length<2 ? "0" + hours : hours;-->
+<!--					minutes = minutes.length<2 ? "0" + minutes : minutes;-->
+<!--					// console.log(fullYear+"-"+month+"-"+day+" "+hours+":"+minutes);-->
+<!--					let $div = $("" +-->
+<!--							"<tr>" +-->
+<!--							"	<td>"+this.id+"</td>" +-->
+<!--							"	<td>"+this.number+"</td>" +-->
+<!--							"	<td>"+this.company+"</td>" +-->
+<!--							"	<td>"+this.userName+"</td>" +-->
+<!--							"	<td>"+this.userPhone+"</td>" +-->
+<!--							"	<td>"+this.status+"</td>" +-->
+<!--							"	<td>"+this.code+"</td>" +-->
+<!--							"	<td>"+fullYear+"-"+month+"-"+day+" "+hours+":"+minutes+"</td>" +-->
+<!--							"	<td><span class=\"btn-danger\">删除</span></td>" +-->
+<!--							"</tr>");-->
+<!--					$(".tab-hover").append($div);-->
+<!--				})-->
+
+<!--			}-->
+<!--			console.log(data);-->
+<!--		},"JSON");-->
+<!--	</script>-->
+</html>
