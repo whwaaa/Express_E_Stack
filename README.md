@@ -1,1 +1,1 @@
-更换url: https://gitee.com/-/ide/project/hanweiwu/Express_E_Stack/edit/cors_ssm/-/webapp/js/myCommon.js
+更换url: https://gitee.com/-/ide/project/hanweiwu/ees/edit/master/-/webapp/js/myCommon.js
