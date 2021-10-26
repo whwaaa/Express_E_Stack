@@ -281,7 +281,7 @@
 
 				var email = $.trim($('#email').val())
 				layer.load()
-				$.getJSON("/wx/InfoModifySendCode.do",{email:email,token:$.cookie('token')},function(data){
+				$.getJSON("/wx/InfoModifySendCode.do?forwardUrl=" + forwardUrl,{email:email,token:$.cookie('token')},function(data){
 					layer.closeAll()
 					if(data.status == 0){
 						// 发送成功
@@ -309,7 +309,7 @@
 				var password = $.trim($("#password").val())
 				var code = $.trim($("#msg").val())
 				layer.load()
-				$.getJSON("/wx/InfoModifyUpdate.do",{username:username,phone:phone,email:email,password:password,code:code,token:$.cookie('token')},function(data){
+				$.getJSON("/wx/InfoModifyUpdate.do?forwardUrl=" + forwardUrl,{username:username,phone:phone,email:email,password:password,code:code,token:$.cookie('token')},function(data){
 					layer.closeAll();
 					if(data.status == 0){
 						layer.msg("<span style='color: white'>"+data.result+"</span>")

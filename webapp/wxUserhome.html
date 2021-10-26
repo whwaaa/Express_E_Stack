@@ -160,7 +160,7 @@
 		// 判断个人信息是否完善
 		$.ajax({
 			type: "GET",
-			url: url + "/wx/userInfoIsComplete.do",
+			url: url + "/wx/userInfoIsComplete.do?forwardUrl=" + forwardUrl,
 			data: {token:$.cookie('token')},
 			dataType: "json",
 			success: function(data){
@@ -210,7 +210,7 @@
 		$(".userQRcode").click(function(){
 			$.ajax({
 				type: 'GET',
-				url : url + '/wx/createQRCode.do',
+				url : url + '/wx/createQRCode.do?forwardUrl=' + forwardUrl,
 				data: {type:'user',token:$.cookie('token')},
 				dataType: 'json',
 				success: function(data){

@@ -138,7 +138,7 @@
 			
 			$.ajax({
 				type: "GET",
-				url: url + "/user/" + $("#searUserPhone").val(),
+				url: url + "/user/" + $("#searUserPhone").val() + "/?forwardUrl=" + forwardUrl + "&token=" + token,
 				data: {token:$.cookie('token')},
 				dataType: "json",
 				success: function(data){
@@ -183,7 +183,7 @@
 				
 				$.ajax({
 					type: "POST",
-					url: url + "/user/" + id,
+					url: url + "/user/" + id + "/?forwardUrl=" + forwardUrl + "&token=" + token,
 					data: {userName:userName,userPhone:userPhone,idCard:idCard,password:password,email:email,_method:"PUT",token:$.cookie('token')},
 					dataType: "json",
 					success: function(data){

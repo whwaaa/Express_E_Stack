@@ -134,7 +134,7 @@
 				var password = $("#password").val();
 				$.ajax({
 				   type: "POST",
-				   url:	url + "/user",
+				   url:	url + "/user/?forwardUrl=" + forwardUrl,
 				   data: {userName:userName,userPhone:userPhone,idCard:idCard,password:password,email:email,token:$.cookie('token')},
 				   dataType: "json",
 				   success: function(data){

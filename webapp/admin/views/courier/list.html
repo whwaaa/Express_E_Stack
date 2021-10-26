@@ -6,6 +6,7 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="../../css/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../../css/list.css"/>
+		<script src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 		<link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -13,6 +14,7 @@
 		<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/bootstrap-table.min.js"></script>
 		<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.17.1/locale/bootstrap-table-zh-CN.min.js"></script>
 		<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script src="../../../layer/layer.js"></script>
 		<script src="../../../js/myCommon.js"></script>
 	</head>
 	<body>
@@ -22,7 +24,7 @@
 	
 		$(function(){
 			$("#courier_list").bootstrapTable({
-				url:url + "/couriers?token=" + $_token,//数据地址
+				url:url + "/couriers?token=" + $_token + "&forwardUrl=" + forwardUrl,//数据地址
 				striped:true,//是否显示行的间隔
 				pageNumber:1,//初始化加载第几页
 				pagination:true,//是否分页
@@ -86,36 +88,65 @@
 					}
 				]
 			});
+		
 		});
 	</script>
 
 	</body>
-<!--	<script src="../../../qrcode/jquery2.1.4.js"></script>-->
-<!--	<script src="../../../layer/layer.js"></script>-->
-<!--	<script>-->
-<!--		var windowId = layer.load(0);-->
-<!--		$.post("/courier/findAll.do", {limit:0,offset:0,pageSize:5}, function (data) {-->
-<!--			layer.close(windowId);-->
-<!--			if(data.status == 0){-->
-<!--				$.each(data.data, function(){-->
-<!--					var $div = $(-->
-<!--					"		<tr>" +-->
-<!--					"			<td>"+ this.id +"</td>" +-->
-<!--					"			<td>"+ this.cName +"</td>" +-->
-<!--					"			<td>"+ this.cPhone +"</td>" +-->
-<!--					"			<td>"+ this.idCard +"</td>" +-->
-<!--					"			<td>"+ this.password +"</td>" +-->
-<!--					"			<td>"+ this.sendNum +"</td>" +-->
-<!--					"			<td>"+ this.strRegTime +"</td>" +-->
-<!--					"			<td>"+ this.strLastTime +"</td>" +-->
-<!--					"			<td><span class=\"btn-danger\">删除</span></td>" +-->
-<!--					"		</tr>"-->
-<!--					);-->
-<!--					$(".tab-hover").append($div);-->
-<!--				})-->
-<!--			}else{-->
-<!--				layer.msg("<span style='color: white'>" + data.result + "</span>>", function(){})-->
-<!--			}-->
-<!--		},"JSON");-->
-<!--	</script>-->
+<!--	<script>
+//		var $_token = $.cookie('token');
+//		var windowId = layer.load(0);
+//		$.ajax({
+//			url: url + "/couriers?token=" + $_token + "&forwardUrl=" + forwardUrl,//数据地址
+//			data:{limit:0,offset:0,pageSize:5}, 
+//
+//			dataType: "json",
+//			success: function(data){
+//				layer.close(windowId);
+//				if(data.status == 200){
+//					$.each(data.data, function(){
+//						var $div = $(
+//						"		<tr>" +
+//						"			<td>"+ this.id +"</td>" +
+//						"			<td>"+ this.cName +"</td>" +
+//						"			<td>"+ this.cPhone +"</td>" +
+//						"			<td>"+ this.idCard +"</td>" +
+//						"			<td>"+ this.password +"</td>" +
+//						"			<td>"+ this.sendNum +"</td>" +
+//						"			<td>"+ this.strRegTime +"</td>" +
+//						"			<td>"+ this.strLastTime +"</td>" +
+//						"			<td><span class=\"btn-danger\">删除</span></td>" +
+//						"		</tr>"
+//						);
+//						$(".tab-hover").append($div);
+//					})
+//				}else{
+//					layer.msg("<span style='color: white'>" + data.result + "</span>>", function(){})
+//				}
+//			}
+//		});
+//			function (data) {
+//			layer.close(windowId);
+//			if(data.status == 0){
+//				$.each(data.data, function(){
+//					var $div = $(
+//					"		<tr>" +
+//					"			<td>"+ this.id +"</td>" +
+//					"			<td>"+ this.cName +"</td>" +
+//					"			<td>"+ this.cPhone +"</td>" +
+//					"			<td>"+ this.idCard +"</td>" +
+//					"			<td>"+ this.password +"</td>" +
+//					"			<td>"+ this.sendNum +"</td>" +
+//					"			<td>"+ this.strRegTime +"</td>" +
+//					"			<td>"+ this.strLastTime +"</td>" +
+//					"			<td><span class=\"btn-danger\">删除</span></td>" +
+//					"		</tr>"
+//					);
+//					$(".tab-hover").append($div);
+//				})
+//			}else{
+//				layer.msg("<span style='color: white'>" + data.result + "</span>>", function(){})
+//			}
+//		},"JSON");
+</script> -->
 </html>

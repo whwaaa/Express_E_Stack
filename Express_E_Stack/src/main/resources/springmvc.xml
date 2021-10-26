@@ -15,20 +15,26 @@
     <mvc:annotation-driven/>
 
     <!-- 配置静态资源处理器 -->
-    <mvc:resources mapping="/**" location="/"/>
+<!--    <mvc:resources mapping="/**" location="/"/>-->
 
-    <!-- 跨域请求 -->
-    <mvc:cors>
-        <mvc:mapping path="/**"
-                     allowed-origins="*"
-                     allowed-methods="GET,POST,PUT,PATCH,DELETE"
-                     allow-credentials="true"
-        />
-    </mvc:cors>
+<!--        <mvc:cors>-->
+<!--            <mvc:mapping path="/**"-->
+<!--                         allowed-headers="*"-->
+<!--                         allowed-origins="*"-->
+<!--                         allowed-methods="GET,POST,PUT,PATCH,DELETE,OPTIONS"-->
+<!--                         allow-credentials="true"-->
+<!--            />-->
+<!--        </mvc:cors>-->
 
     <!-- 配置拦截器 -->
     <mvc:interceptors>
-        <!-- 可以配置多个拦截器 -->
+        <!-- 跨域请求 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.xiaojumao.interception.CORSInterceptor"></bean>
+        </mvc:interceptor>
+
+        <!-- 登陆验证 -->
         <mvc:interceptor>
             <!-- 拦截器拦截路径 -->
             <mvc:mapping path="/**"/>

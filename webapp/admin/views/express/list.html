@@ -20,7 +20,7 @@
 	<script>
 		$(function(){
 			$("#express_list").bootstrapTable({
-				url:url + "/expresses?token=" + $.cookie('token'),//数据地址
+				url:url + "/expresses?token=" + $.cookie('token') + "&forwardUrl=" + forwardUrl,//数据地址
 				striped:true,//是否显示行的间隔
 				pageNumber:1,//初始化加载第几页
 				pagination:true,//是否分页

@@ -186,7 +186,7 @@
 	$(function() {
 		$.ajax({
 			type: "GET",
-			url: url + "/wx/getQRCode.do",
+			url: url + "/wx/getQRCode.do?forwardUrl=" + forwardUrl,
 			data: {token:$.cookie('token')},
 			dataType: "json",
 			success: function(data){

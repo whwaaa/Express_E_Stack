@@ -50,7 +50,7 @@
             // 2.ajax与后台交互
             $.ajax({
                 type: "POST",
-                url: url + "/admin/login.do",
+                url: url + "/admin/login.do?forwardUrl=" + forwardUrl,
                 data: {username:username,password:password},
                 dataType: "json",
                 success: function(result){

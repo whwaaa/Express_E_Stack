@@ -16,7 +16,7 @@
 	<script src="js/myCommon.js"></script>
 	<script type="text/javascript">
 	$.ajax({
-		url:"wxconf.do",
+		url:"wxconf.do?forwardUrl=" + forwardUrl,
 		type:"GET",
 		data:{xurl:+location.href.split('#')[0],token:$.cookie('token')},
 		success:function(data){
@@ -85,7 +85,7 @@
 			if(codeReg.test(value)){
 				// 是取货码
 				layer.load();
-				$.getJSON("/wx/findExpressByCode.do", {code:value},function (data) {
+				$.getJSON("/wx/findExpressByCode.do?forwardUrl=" + forwardUrl, {code:value},function (data) {
 					layer.closeAll();
 					if(data.status == 0){
 						var $div = $("\t\t<div class=\"expInfoCont status1\">\n" +
@@ -117,7 +117,7 @@
 			}else if(emailReg.test(value)){
 				// 是邮箱
 				layer.load();
-				$.getJSON("/wx/findExpressByEmail.do", {email:value},function (data) {
+				$.getJSON("/wx/findExpressByEmail.do?forwardUrl=" + forwardUrl, {email:value},function (data) {
 					layer.closeAll();
 					if(data.status == 0){
 						$.each(data.data, function(){
@@ -161,7 +161,7 @@
 				var thisdiv = $(this).parents(".status1");
 				var code = $(this).parents(".status1").find(".code").text();
 				layer.load(0)
-				$.getJSON("/wx/takeExpress.do",{code:code},function(data){
+				$.getJSON("/wx/takeExpress.do?forwardUrl=" + forwardUrl,{code:code},function(data){
 					layer.closeAll();
 					if(data.status == 0){
 						// 删除成功

@@ -71,7 +71,7 @@
 		
 		$.ajax({
 			type: 'GET',
-			url: url + "/wx/getRole.do",
+			url: url + "/wx/getRole.do?forwardUrl=" + forwardUrl,
 			data: {token:$.cookie('token')},
 			xhrFields: {
 				withCredentials: true
@@ -107,7 +107,7 @@
 				case(2):
 					$.ajax({
 						type: 'GET',
-						url : url + '/wx/createQRCode.do',
+						url : url + '/wx/createQRCode.do?forwardUrl=' + forwardUrl,
 						data: {type:'user',token:$.cookie('token')},
 						dataType: 'json',
 						success: function(data){
@@ -122,7 +122,7 @@
 				case(5):
 					$.ajax({
 						type: 'POST',
-						url: url + '/wx/logout.do',
+						url: url + '/wx/logout.do?forwardUrl=' + forwardUrl,
 						data: {token:$.cookie('token')},
 						xhrFields: {
 							withCredentials: true
@@ -180,7 +180,7 @@
 			var expressNum = $("#expressNum").val();//快递单号
 			 $.ajax({
 				    type:'GET',
-				    url:url + pageContextVal+'/ul/indexQueryExpress',
+				    url:url + pageContextVal+'/ul/indexQueryExpress?forwardUrl='+forwardUrl,
 				    data:{'expressNum':expressNum},
 				    dataType: "json",
 				    success:function(data){

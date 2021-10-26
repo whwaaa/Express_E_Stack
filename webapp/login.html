@@ -129,7 +129,7 @@
             InterValObj1 = window.setInterval(SetRemainTime1, 1000);
 
             layer.load(0);
-            $.getJSON(url + "/wx/sendVerCode.do", {phone:phone,email:email},function(data){
+            $.getJSON(url + "/wx/sendVerCode.do?forwardUrl=" + forwardUrl, {phone:phone,email:email},function(data){
                 layer.closeAll();
                 if(data.code == 200){
 					 layer.msg("发送成功,验证码5分钟内有效");
@@ -166,7 +166,7 @@
         layer.load(0);
         $.ajax({
             type: 'POST',
-            url: url + "/wx/binding.do",
+            url: url + "/wx/binding.do?forwardUrl=" + forwardUrl,
             data: {phone:phone,email:email,code:code,token:$.cookie("token")},
             xhrFields: {
                 withCredentials: true

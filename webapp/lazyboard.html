@@ -265,7 +265,7 @@
 		if($(".tab1").children().size() == 0){
 			$.ajax({
 				type: "GET",
-				url: url + "/wx/layboard.do",
+				url: url + "/wx/layboard.do?forwardUrl=" + forwardUrl,
 				data: {timeType:0,token:$.cookie('token')},
 				dataType: "json",
 				success: function(data){
@@ -311,7 +311,7 @@
 		if($(".tab2").children().size() == 0){
 			$.ajax({
 				type: "GET",
-				url: url + "/wx/layboard.do",
+				url: url + "/wx/layboard.do?forwardUrl=" + forwardUrl,
 				data: {timeType:1},
 				dataType: "json",
 				success: function(data){
@@ -354,7 +354,7 @@
 		if($(".tab3").children().size() == 0){
 			$.ajax({
 				type: "GET",
-				url: url + "/wx/layboard.do",
+				url: url + "/wx/layboard.do?forwardUrl=" + forwardUrl,
 				data: {timeType:2},
 				dataType: "json",
 				success: function(data){

@@ -225,7 +225,7 @@
 			layer.load();
 			$.ajax({
 				type: "POST",
-				url: url + "/wx/express",
+				url: url + "/wx/express?forwardUrl=" + forwardUrl,
 				data: {expressId:expressId,username:username,phone:phone,email:email,company:company,token:$.cookie('token')},
 				dataType: "json",
 				success: function(data){

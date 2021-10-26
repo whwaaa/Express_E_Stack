@@ -141,7 +141,7 @@
 
 				$.ajax({
 				   type: "POST",
-				   url:	url + "/express",
+				   url:	url + "/express?forwardUrl=" + forwardUrl,
 				   data: {number:number,company:company,userName:userName,userPhone:userPhone,email:email,token:$.cookie('token')},
 				   dataType: "json",
 				   success: function(data){

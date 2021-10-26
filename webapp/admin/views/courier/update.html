@@ -137,7 +137,7 @@
 			var windowId = layer.load(0);
 			$.ajax({
 				type: "GET",
-				url: url + "/courier/" + $("#searchCPhone").val(),
+				url: url + "/courier/" + $("#searchCPhone").val() + "?forwardUrl=" + forwardUrl + "&token=" + token,
 				data: $.cookie('token'),
 				dataType: "json",
 				success: function(data){
@@ -184,7 +184,7 @@
 				// 2.与服务器交互
 				$.ajax({
 					type: "POST",
-					url: url + "/courier/" + id,
+					url: url + "/courier/" + id + "?forwardUrl=" + forwardUrl + "&token=" + token,
 					data: {cName:cName,cPhone:cPhone,idCard:idCard,password:password,email,_method:"PUT",token:$.cookie('token')},
 					dataType: "json",
 					success: function(data){

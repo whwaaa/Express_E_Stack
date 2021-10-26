@@ -311,7 +311,7 @@
 
 			$.ajax({
 				type: "POST",
-				url: url + "/wx/InfoModifyUpdate.do",
+				url: url + "/wx/InfoModifyUpdate.do?forwardUrl=" + forwardUrl,
 				data: {username:username,phone:phone,email:email,code:code,password:password,_method:"PUT",token:$.cookie('token')},
 				dataType: "json",
 				success: function(data){
@@ -348,7 +348,7 @@
 			layer.load(0)
 			$.ajax({
 				type: "POST",
-				url: url + "/wx/InfoModifySendCode.do",
+				url: url + "/wx/InfoModifySendCode.do?forwardUrl=" + forwardUrl,
 				data: {email:email,token:$.cookie('token')},
 				dataType: "json",
 				success: function(data){
@@ -370,7 +370,7 @@
 	$(function(){
 		$.ajax({
 			type: "GET",
-			url: url + "/wx/wxIdCardUserInfoModifyInit.do",
+			url: url + "/wx/wxIdCardUserInfoModifyInit.do?forwardUrl=" + forwardUrl,
 			data: {token:$.cookie('token')},
 			dataType: "json",
 			success: function(data){

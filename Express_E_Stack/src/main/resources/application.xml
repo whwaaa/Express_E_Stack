@@ -12,10 +12,18 @@
 <!--    配置数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/express_e_stack?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true&amp;useSSL=false"/>
+        <property name="jdbcUrl" value="jdbc:mysql://cn-zz-bgp-1.natfrp.cloud:45299/express_e_stack?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true&amp;useSSL=false"/>
         <property name="user" value="Express_E_Stack"/>
         <property name="password" value="ExxCCDejGJwx85iF"/>
     </bean>
+
+<!--Debug-->
+<!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/express_e_stack?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true&amp;useSSL=false"/>-->
+<!--        <property name="user" value="root"/>-->
+<!--        <property name="password" value="zUC8ytsEEh7gCj"/>-->
+<!--    </bean>-->
 
 <!--    创建JdbcTemplate模板-->
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

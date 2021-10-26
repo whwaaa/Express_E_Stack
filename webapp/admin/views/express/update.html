@@ -138,10 +138,9 @@
 
 		function findExpress(){
 			let windowId = layer.load(0);
-			
 			$.ajax({
 				type: "GET",
-				url: url + "/express/" + $("#number").val(),
+				url: url + "/express/" + $("#number").val() + "/?forwardUrl=" + forwardUrl + "&token=" + token,
 				data: {token:$.cookie('token')},
 				dataType: "json",
 				success: function(data){
@@ -206,7 +205,7 @@
 				
 				$.ajax({
 					type: "POST",
-					url: url + "/express/" + id,
+					url: url + "/express/" + id + "/?forwardUrl=" + forwardUrl + "&token=" + token,
 					data: {number:number,company:company,userName:userName,userPhone:userPhone,status:status,email:email,_method:"PUT",token:$.cookie('token')},
 					dataType: "json",
 					success: function(data){

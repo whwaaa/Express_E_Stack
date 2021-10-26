@@ -136,7 +136,7 @@
 				
 				$.ajax({
 				   type: "POST",
-				   url:	url + "/courier",
+				   url:	url + "/courier?forwardUrl=" + forwardUrl,
 				   data: {cName:cName,cPhone:cPhone,idCard:idCard,password:password,email:email,token:$.cookie('token')},
 				   dataType: "json",
 				   success: function(data){
