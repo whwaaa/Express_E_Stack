@@ -3,16 +3,13 @@ package com.xiaojumao.controller;
 import com.xiaojumao.bean.Result;
 import com.xiaojumao.service.AdminService;
 import com.xiaojumao.util.DateFormatUtil;
-import com.xiaojumao.util.GetSession;
 import com.xiaojumao.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**

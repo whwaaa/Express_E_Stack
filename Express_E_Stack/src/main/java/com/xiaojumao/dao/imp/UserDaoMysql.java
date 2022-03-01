@@ -6,7 +6,6 @@ import com.xiaojumao.exception.DuplicateEmailException;
 import com.xiaojumao.exception.DuplicateUserNameException;
 import com.xiaojumao.exception.DuplicateUserPhoneException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -104,13 +103,14 @@ public class UserDaoMysql extends JdbcDaoSupport implements BaseUserDao {
                         }
                     });
         }else{
-            return this.getJdbcTemplate().query(SQL_FIND_ALL,
+            List<User> query = this.getJdbcTemplate().query(SQL_FIND_ALL,
                     new RowMapper<User>() {
                         @Override
                         public User mapRow(ResultSet resultSet, int i) throws SQLException {
                             return handleResult(resultSet);
                         }
                     });
+            return query;
         }
     }
 

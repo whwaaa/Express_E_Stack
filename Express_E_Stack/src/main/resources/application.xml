@@ -9,12 +9,22 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <context:component-scan base-package="com.xiaojumao.dao,com.xiaojumao.service,com.xiaojumao.aop,com.xiaojumao.util"/>
+    <aop:aspectj-autoproxy expose-proxy="true"/>
+    <aop:aspectj-autoproxy  proxy-target-class="true"/>
+
+    <!-- 引入redis相关配置 -->
+    <import resource="application_redis.xml"/>
+
+    <!-- Spring引入属性文件(存在多个文件用逗号分隔) -->
+    <context:property-placeholder location="classpath:jdbc.properties" />
+
 <!--    配置数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://cn-zz-bgp-1.natfrp.cloud:45299/express_e_stack?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true&amp;useSSL=false"/>
-        <property name="user" value="Express_E_Stack"/>
-        <property name="password" value="ExxCCDejGJwx85iF"/>
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 
 <!--Debug-->
@@ -30,16 +40,13 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-<!--    事务管理器-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+    <!-- 事务管理 -->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
-
-    <context:component-scan base-package="com.xiaojumao.dao,com.xiaojumao.service,com.xiaojumao.aop"/>
-    <aop:aspectj-autoproxy expose-proxy="true"/>
-    <aop:aspectj-autoproxy  proxy-target-class="true"/>
+    <!-- 开启事务注解 -->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
 
 
 </beans>

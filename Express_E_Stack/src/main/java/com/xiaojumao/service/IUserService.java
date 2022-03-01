@@ -4,8 +4,6 @@ import com.xiaojumao.bean.User;
 import com.xiaojumao.exception.DuplicateEmailException;
 import com.xiaojumao.exception.DuplicateUserNameException;
 import com.xiaojumao.exception.DuplicateUserPhoneException;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;

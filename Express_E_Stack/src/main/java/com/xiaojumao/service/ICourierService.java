@@ -1,17 +1,10 @@
 package com.xiaojumao.service;
 
 import com.xiaojumao.bean.Courier;
-import com.xiaojumao.dao.imp.CourierDaoMysql;
 import com.xiaojumao.exception.DuplicateCNameException;
 import com.xiaojumao.exception.DuplicateCPhoneException;
 import com.xiaojumao.exception.DuplicateEmailException;
-import com.xiaojumao.util.DateFormatUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 

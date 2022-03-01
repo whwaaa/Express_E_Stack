@@ -1,14 +1,12 @@
 package com.xiaojumao.wx.controller;
 
 import com.xiaojumao.bean.Courier;
-import com.xiaojumao.bean.Message;
 import com.xiaojumao.bean.Result;
 import com.xiaojumao.exception.*;
 import com.xiaojumao.service.CourierService;
 import com.xiaojumao.service.UserService;
 import com.xiaojumao.util.*;
 import com.xiaojumao.wx.bean.User;
-import com.xiaojumao.wx.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +46,7 @@ public class WXUserController {
 //    }
 
     @ResponseBody
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "login.do", method = RequestMethod.POST)
     public Result loginByPassword(HttpServletRequest req){
         String email = req.getParameter("email");
         String password = req.getParameter("password");

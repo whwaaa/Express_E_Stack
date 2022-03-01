@@ -6,7 +6,6 @@ import com.xiaojumao.bean.Message;
 import com.xiaojumao.bean.Result;
 import com.xiaojumao.service.ExpressService;
 import com.xiaojumao.util.DateFormatUtil;
-import com.xiaojumao.util.GetSession;
 import com.xiaojumao.util.ResultHandle;
 import com.xiaojumao.util.TokenUtils;
 import com.xiaojumao.wx.bean.User;

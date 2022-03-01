@@ -1,13 +1,7 @@
 package com.xiaojumao.filter;
 
 
-import com.xiaojumao.util.GetSession;
-import com.xiaojumao.util.TokenUtils;
-
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**

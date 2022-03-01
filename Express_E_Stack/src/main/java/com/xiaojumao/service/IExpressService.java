@@ -2,10 +2,7 @@ package com.xiaojumao.service;
 
 import com.xiaojumao.bean.Express;
 import com.xiaojumao.bean.LazyInfo;
-import com.xiaojumao.bean.Message;
 import com.xiaojumao.exception.DuplicateNumberException;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.List;

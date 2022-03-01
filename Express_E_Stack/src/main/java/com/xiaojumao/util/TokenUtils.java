@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.xiaojumao.service.RedisService;
 import com.xiaojumao.wx.bean.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 import java.util.UUID;
 
@@ -15,8 +18,10 @@ import java.util.UUID;
  * @date 2021/9/22
  */
 
+//@Component
 public class TokenUtils {
 
+//    @Resource
     private static RedisService redisService;
 
     static{

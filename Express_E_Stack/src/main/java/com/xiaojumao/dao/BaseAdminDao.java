@@ -1,7 +1,5 @@
 package com.xiaojumao.dao;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
 import java.sql.Timestamp;
 
 /**

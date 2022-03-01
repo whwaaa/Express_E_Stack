@@ -5,11 +5,13 @@ import com.xiaojumao.exception.DuplicateNumberException;
 import com.xiaojumao.service.ExpressService;
 import com.xiaojumao.util.DateFormatUtil;
 import com.xiaojumao.util.EmailSend;
-import com.xiaojumao.util.GetSession;
 import com.xiaojumao.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;

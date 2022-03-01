@@ -1,11 +1,10 @@
 package com.xiaojumao.service;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+//import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import com.xiaojumao.bean.Express;
 import com.xiaojumao.bean.LazyInfo;
-import com.xiaojumao.bean.Message;
 import com.xiaojumao.dao.imp.ExpressDaoMysql;
-import com.xiaojumao.exception.DuplicateCodeException;
 import com.xiaojumao.exception.DuplicateNumberException;
 import com.xiaojumao.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;

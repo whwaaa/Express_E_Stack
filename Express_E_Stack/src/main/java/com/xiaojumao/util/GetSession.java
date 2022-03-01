@@ -1,10 +1,5 @@
 package com.xiaojumao.util;
 
-import com.xiaojumao.wx.bean.User;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 /**
  * @Author: whw
  * @Description:

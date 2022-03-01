@@ -7,7 +7,6 @@ import com.xiaojumao.exception.DuplicateCPhoneException;
 import com.xiaojumao.exception.DuplicateEmailException;
 import com.xiaojumao.util.DateFormatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

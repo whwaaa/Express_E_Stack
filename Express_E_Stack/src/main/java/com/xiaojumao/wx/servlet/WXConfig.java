@@ -18,7 +18,7 @@ public class WXConfig extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter pw = response.getWriter();
-		String urlText = request.getParameter("xurl");
+		String urlText = request.getParameter("url");
 		try {
 			String json = SignatureUtil.getConfig(urlText ).toJSON();
 			pw.println(json);

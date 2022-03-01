@@ -2,7 +2,6 @@ package com.xiaojumao.wx.controller;
 
 import com.xiaojumao.bean.Express;
 import com.xiaojumao.bean.LazyInfo;
-import com.xiaojumao.bean.Message;
 import com.xiaojumao.bean.Result;
 import com.xiaojumao.exception.DuplicateNumberException;
 import com.xiaojumao.service.ExpressService;
