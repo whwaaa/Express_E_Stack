@@ -23,4 +23,4 @@
 
 ​	快递e栈前台快递员与用户端是快递员和用户专用的平台，不同的身份登录系统自动切换不同身份，快递员可录入快递，查询快递，扫码取件，用户身份可对自己的信息进行管理修改，查询自己的快递。
 
-<img src="https://gitee.com/hanweiwu/tuchuang/raw/master/img/image-20220301194328172.png" alt="image-20220301194328172" style="zoom:80%;" />
+<img src="https://gitee.com/hanweiwu/tuchuang/raw/master/img/image-20220301195017746.png" alt="image-20220301195017746" style="zoom:80%;" />
